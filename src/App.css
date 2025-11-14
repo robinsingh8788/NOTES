@@ -1,0 +1,404 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', sans-serif;
+  height: 100%;
+  background-color: #f2f2f2;
+}
+
+.app {
+  display: flex;
+  height: 100vh;
+}
+
+/* Sidebar styles */
+.sidebar {
+  width: 300px;
+  background-color: white;
+  border-right: 1px solid #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-title {
+  text-align: center;
+  font-size: 24px;
+  color: #4a4eff;
+  margin-bottom: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+.sidebar li {
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.sidebar li.active,
+.sidebar li:hover {
+  background-color: #f0f0f0;
+}
+
+.avatar {
+  background-color: #4a4eff;
+  color: white;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: bold;
+  margin-right: 10px;
+  font-size: 14px;
+}
+
+.sidebar button {
+  background-color: #4a4eff;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 24px;
+  cursor: pointer;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+/* Main screen */
+.main {
+  flex-grow: 1;
+  background-color: #dae0fa;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  text-align: center;
+  overflow-y: auto;
+}
+
+.placeholder {
+  text-align: center;
+  max-width: 600px;
+}
+
+.placeholder img {
+  width: 100%;
+  max-width: 350px;
+  max-height: 250px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 20px auto;
+}
+
+.placeholder h1 {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #2d2d2d;
+}
+
+.placeholder p {
+  font-size: 16px;
+  color: #555;
+  margin: 0;
+}
+
+/* Notes display */
+.notes-display {
+  flex-grow: 1;
+  width: 100%;
+  overflow-y: auto;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.note {
+  background-color: #fff;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  min-height: 100px;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+.timestamps {
+  position: absolute;
+  bottom: 10px;
+  right: 15px;
+  text-align: right;
+  font-size: 12px;
+  color: #888;
+  line-height: 1.3;
+}
+
+.note small {
+  display: block;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* Note input */
+.note-input {
+  display: flex;
+  margin-top: auto;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.note-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+
+.note-input button {
+  background-color: #4a4eff;
+  color: white;
+  padding: 0 20px;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.note-input button:not(.active) {
+  background-color: gray;
+  cursor: not-allowed;
+}
+
+/* Popup */
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.popup {
+  background-color: white;
+  padding: 30px;
+  border-radius: 15px;
+  width: 300px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.3);
+  text-align: center;
+}
+
+.popup h3 {
+  margin-bottom: 15px;
+}
+
+.popup input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.popup button {
+  background-color: #4a4eff;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-left: auto;
+  display: block;
+}
+
+.color-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.color-row label {
+  font-weight: 500;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.color-options {
+  display: flex;
+  gap: 10px;
+}
+
+.color-dot {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.top-bar {
+  background-color: #4a4eff;
+  color: white;
+  width: 100%;
+  padding: 15px 30px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.group-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.group-header h2 {
+  font-size: 22px;
+  font-weight: 600;
+  margin: 0;
+  color: white;
+}
+
+.group-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  font-weight: bold;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+}
+
+.delete-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 16px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* FUNC2 - Note Detail Popup */
+.note-detail-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+}
+
+.note-detail {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: left;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.note-detail h3 {
+  margin-top: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.note-detail p {
+  font-size: 16px;
+  line-height: 1.5;
+  color: #444;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .app {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    padding: 15px;
+  }
+
+  .sidebar ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .sidebar li {
+    flex: 1 1 calc(50% - 20px);
+  }
+
+  .main {
+    padding: 15px;
+    align-items: stretch;
+  }
+
+  .note-input {
+    flex-direction: column;
+  }
+
+  .note-input input {
+    border-radius: 10px;
+    margin-bottom: 10px;
+  }
+
+  .note-input button {
+    border-radius: 10px;
+  }
+
+  .popup {
+    width: 90%;
+  }
+
+  .top-bar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+}
