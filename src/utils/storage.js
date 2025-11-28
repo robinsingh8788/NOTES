@@ -17,8 +17,10 @@ export function saveNotes(groupName, notes) {
 }
 
 export function getSelectedGroup() {
-  return localStorage.getItem("selected-group");
+  const value = localStorage.getItem("selected-group");
+  return value && value !== "undefined" ? value : null;
 }
+
 
 export function setSelectedGroup(groupName) {
   localStorage.setItem("selected-group", groupName);
