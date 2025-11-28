@@ -1,0 +1,10 @@
+<<<<<<< HEAD
+node_modules/ 
+=======
+node_modules 
+build 
+.cache 
+.DS_Store 
+.env 
+.env 
+>>>>>>> de8310c420f3b74eba9cd253aac34ca9be53bb61
