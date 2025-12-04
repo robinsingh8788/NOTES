@@ -175,11 +175,14 @@ useEffect(() => {
         {groups.length === 0 || !selectedGroup ? (
   <>
     <div className="placeholder">
-      <img src={`${process.env.PUBLIC_URL}/welcome.png`} alt="Welcome" />
-      <h1>Pocket Notes</h1>
-      <p>Send and receive messages without keeping your phone online.</p>
-      <p>Use Pocket Notes on up to 4 linked devices and 1 mobile phone.</p>
-    </div>
+  <img src={`${process.env.PUBLIC_URL}/welcome.png`} alt="Welcome" />
+  <h1>Pocket Notes</h1>
+  <p>Send and receive messages without keeping your phone online.</p>
+  <p>Use Pocket Notes on up to 4 linked devices and 1 mobile phone.</p>
+</div>
+
+<div className="encryption-note">🔒 end-to-end encrypted</div>
+
 
     {/* Lock text fixed at bottom */}
     <div className="encryption-note">🔒 end-to-end encrypted</div>
